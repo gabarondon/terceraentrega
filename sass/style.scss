@@ -1,0 +1,469 @@
+/////////////////////////////
+
+//font size// 
+$font-xs:1rem;
+$font-s:2rem;
+$font-m:3rem;
+$font-l:4rem;
+
+$fonttype: 'Inter';
+
+
+//mapa//
+$colors: ("primary-pink":#e6017e,
+    "secondary-pink":#d60076,
+    "tertiary-pink":#ac025f,
+    "primary-neutro":rgb(255, 255, 255),
+    "secondary-neutro":#131313,
+);
+
+//mixin//
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+//extend//
+.title-style {
+    font-weight: 900;
+    font-size: $font-l;
+}
+
+
+/////////////////////////////////
+
+body {
+    font-family: $fonttype,
+        sans-serif;
+}
+
+
+//-----header-----//
+
+header {
+
+    //-----Nav-----//
+    nav {
+        background-color: map-get($colors, "secondary-neutro");
+
+        .nav-link {
+            color: map-get($colors, "primary-neutro");
+
+            &:hover {
+                color: map-get($colors, "primary-pink");
+                font-weight: 500;
+            }
+
+            &:active {
+                color: map-get($colors, "tertiary-pink");
+            }
+        }
+
+        .navbar-toggler {
+            border-color: map-get($colors, "primary-neutro");
+        }
+
+        .navbar-icon {
+            color: map-get($colors, "primary-neutro");
+        }
+
+        @media (min-width:320px) and (max-width:480px) {
+
+            .navbar-brand {
+                display: flex;
+                width: 60%;
+            }
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+
+            .navbar-brand {
+                display: flex;
+                width: 65%;
+            }
+
+        }
+    }
+
+    // Home //
+
+    #container__image--home {
+        animation: from-top 2s ease;
+    }
+
+    .container__ppaltext {
+        @include center;
+
+        h1 {
+            @extend .title-style
+        }
+
+        p {
+            font-size: $font-s - 0.7;
+        }
+
+        @media (min-width:320px) and (max-width:480px) {
+
+            h1 {
+                font-size: $font-m;
+            }
+
+            p {
+                font-size: $font-xs;
+            }
+        }
+
+
+    }
+
+    //-----Seccion portfolio-----//
+
+    .container__hero--portfolio {
+
+        animation: from-top 2s ease;
+
+        h1 {
+            @extend .title-style;
+        }
+
+        @keyframes from-top {
+            0% {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+
+        }
+
+        span:hover {
+            color: map-get($colors, "primary-pink");
+        }
+
+    }
+
+
+}
+
+
+
+
+/* Main */
+
+main {
+
+    .container__image {
+        max-height: 200px;
+        overflow: hidden;
+        animation: scaledown .4s linear;
+        animation-fill-mode: forwards;
+
+        &:hover {
+            z-index: 100;
+            animation: scale 0.4s linear;
+            animation-fill-mode: forwards;
+            opacity: 0.8;
+        }
+    }
+
+    // Animacion portafolio //
+
+    @keyframes scaledown {
+        0% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        100% {
+            -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+        }
+
+    }
+
+    @keyframes scale {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        100% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+    }
+
+    @keyframes reboteIn_abajo {
+
+        0% {
+            opacity: 0;
+            transform: translateY(100vw);
+        }
+
+        50% {
+            transform: translateY(-30px);
+            opacity: 1;
+        }
+
+        70% {
+
+            transform: translateY(10px);
+
+        }
+
+    }
+
+
+}
+
+#portfolio {
+    animation: reboteIn_abajo 5s 1;
+
+    h2 {
+        font-weight: 900;
+        font-size: $font-m;
+    }
+
+    @media (min-width:320px) and (max-width:480px) {
+
+        h2 {
+            font-size: $font-s;
+        }
+
+    }
+
+}
+
+// Animacion portafolio cierre //
+
+// Form // 
+
+form {
+    .buttonContact {
+        background-color: map-get($colors, "primary-pink");
+        border-style: none;
+        height: 40px;
+
+        &:hover {
+            background-color: map-get($colors, "secondary-pink");
+        }
+
+        &:active {
+            background-color: map-get($colors, "tertiary-pink");
+        }
+    }
+}
+
+// Form //
+
+
+
+// Inicio animacion seccion about me - resume //
+#container__aboutme,
+#container__resume {
+    animation: from-left 1.5s ease;
+
+    @keyframes from-left {
+        0% {
+            opacity: 0;
+            transform: translateX(80px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+}
+
+// Cierre animacion seccion about me - resume //
+
+// seccion portfolio // 
+
+#container__text--portfolio {
+
+    @media (min-width:320px) and (max-width:480px) {
+
+        h1 {
+            font-size: $font-s;
+        }
+
+
+    }
+}
+
+// seccion about me // 
+
+#container__aboutme {
+
+    #container__text--aboutme {
+
+        h1 {
+            font-size: $font-m;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: $font-l;
+            font-weight: 900;
+        }
+
+        @media (min-width:320px) and (max-width:480px) {
+
+            padding-left: 65px;
+
+            h1 {
+                font-size: $font-s;
+            }
+
+            h2 {
+                font-size: $font-s + 0.4;
+            }
+
+            h3 {
+                font-size: $font-xs;
+            }
+
+        }
+
+        @media (min-width:481px) and (max-width:768px) {
+
+            padding-left: 55px;
+        }
+    }
+
+    #container__photo {
+
+        img {
+            @media (min-width:320px) and (max-width:480px) {
+
+                height: 480px;
+                width: auto;
+            }
+
+            @media (min-width:481px) and (max-width:768px) {
+
+                height: 700px;
+                width: auto;
+            }
+
+
+        }
+
+    }
+
+}
+
+// cierre seccion about me // 
+
+// inicio seccion resume // 
+
+#container__resume {
+
+    @media (min-width:320px) and (max-width:480px) {
+
+        padding-right: 40px;
+
+    }
+
+    @media (min-width:768px) and (max-width:992px) {
+
+        padding-left: 150px;
+
+    }
+
+    h1 {
+        @extend .title-style;
+
+        @media (min-width:320px) and (max-width:480px) {
+
+            font-size: $font-s;
+
+        }
+    }
+
+
+    #container__photo--resume {
+        @media (min-width:320px) and (max-width:479px) {
+
+            width: auto;
+            height: 400px;
+
+        }
+
+        @media (min-width:480px) and (max-width:768px) {
+
+            width: auto;
+            height: 600px;
+
+        }
+
+        @media (min-width:768px) and (max-width:992px) {
+
+            width: auto;
+            height: 800px;
+            padding-left: 40px;
+
+        }
+    }
+
+    #btn__resume {
+
+        border-radius: 90px;
+        width: 12em;
+        height: 2em;
+        border-style: none;
+        color: map-get($colors, "primary-neutro");
+        font-weight: 600;
+        background-color: map-get($colors, "primary-pink");
+
+        &:hover {
+            background: map-get($colors, "secondary-pink");
+        }
+
+        &:active {
+            color: map-get($colors, "tertiary-pink");
+        }
+
+        @media (min-width:320px) and (max-width:480px) {
+            font-size: $font-xs;
+            width: 12em;
+        }
+    }
+}
+
+
+// cierre seccion resume //
+
+// inicio footer //
+
+
+footer {
+
+    background-color: map-get($colors, "secondary-neutro");
+
+    h5 {
+        color: map-get($colors, "primary-neutro");
+    }
+
+    #btn__footer {
+
+        background-color: map-get($colors, "primary-pink");
+
+
+        &:hover {
+            background: map-get($colors, "tertiary-pink");
+        }
+
+        i {
+            color: map-get($colors, "primary-neutro");
+        }
+    }
+}
